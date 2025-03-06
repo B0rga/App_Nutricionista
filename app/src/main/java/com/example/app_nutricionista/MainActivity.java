@@ -20,15 +20,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         replaceFragment(new chat());
 
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-
-            switch (item.getItemId()){
-                case R.id.chatId;
-                    break;
-                case R.id.dietaId;
-                    break;
-                case R.id.perfilId;
-                    break;
+        binding.topNavigationView.setOnItemSelectedListener(item -> {
+            int itemId = item.getItemId();
+            if (itemId == R.id.chatId) {
+                replaceFragment(new chat());
+            } else if (itemId == R.id.dietaId) {
+                replaceFragment(new dieta());
+            } else if (itemId == R.id.perfilId) {
+                replaceFragment(new perfil());
             }
             return true;
         });

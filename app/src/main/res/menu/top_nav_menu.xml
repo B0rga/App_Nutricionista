@@ -2,14 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/chatId"
-        android:title="Chat"
-        android:icon="@drawable/baseline_chat_24"/>
+        android:title="Chat" />
     <item
         android:id="@+id/dietaId"
-        android:title="Dieta"
-        android:icon="@drawable/baseline_restaurant_menu_24" />
+        android:title="Dieta" />
     <item
         android:id="@+id/perfilId"
-        android:title="Perfil"
-        android:icon="@drawable/baseline_person_24" />
+        android:title="Perfil" />
 </menu>

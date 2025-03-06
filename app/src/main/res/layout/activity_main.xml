@@ -13,15 +13,19 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/bottomNavigationView"
+        android:layout_below="@+id/topNavigationView"
         android:layout_marginTop="0dp">
+
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
+        android:id="@+id/topNavigationView"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        app:itemActiveIndicatorStyle="@null"
         app:itemPaddingBottom="20dp"
         app:itemPaddingTop="0dp"
+        app:itemTextColor="@color/top_nav_text_color"
+        app:itemIconTint="@color/top_nav_text_color"
         app:menu="@menu/top_nav_menu" />
 </RelativeLayout>
