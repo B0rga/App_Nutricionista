@@ -2,6 +2,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#F5F5F5</color>
-    <color name="cor_selecionada">#89CFF0</color>
+    <color name="cor_selecionada">#4169E1</color>
     <color name="cor_padrao">#c0c0c0</color>
+    <color name="cor_BackMensagem">#201E25</color>
+    <color name="cor_TextMensagem" >#FFFFFF</color>
 </resources>

@@ -1,15 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".chat">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
+        android:id="@+id/scroll"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="chat" />
+        android:layout_height="603dp"
+        android:layout_above="@+id/btnAddImagem"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="18dp">
 
-</FrameLayout>
+        <LinearLayout
+            android:id="@+id/chat"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textoTemporario"
+                android:layout_width="340dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="18dp"
+                android:text="Inice a conversa para receber seu atendimento nutricional personalizado\n\nEnvie fotos do pratos de comida para saber os nutrientes e calorias envolvidas"
+                android:textAlignment="viewStart"
+                android:textColor="#7A7A7A"
+                android:textSize="18sp"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+    </ScrollView>
+
+    <EditText
+        android:id="@+id/editTarefa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@+id/btnGo"
+        android:background="@drawable/round_style_input"
+        android:ems="10"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:hint="O que deseja?"
+        android:inputType="text"
+        android:onClick="Des"
+        android:padding="12dp"
+        android:windowSoftInputMode="adjustResize"></EditText>
+
+    <Button
+        android:id="@+id/btnGo"
+        android:layout_width="48dp"
+        android:layout_height="56dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:backgroundTint="@color/cor_selecionada"
+        android:isScrollContainer="false"
+        android:padding="0dp"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:icon="@android:drawable/ic_menu_send"
+        app:iconGravity="textTop"
+        app:iconPadding="0dp"
+        app:iconSize="34dp"
+        app:iconTint="#FFFFFF"
+        app:iconTintMode="multiply" />
+
+    <Button
+        android:id="@+id/btnAddImagem"
+        android:layout_width="43dp"
+        android:layout_height="42dp"
+        android:layout_above="@+id/editTarefa"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#00FFFFFF"
+        android:isScrollContainer="false"
+        app:icon="@android:drawable/ic_menu_add"
+        app:iconGravity="textEnd"
+        app:iconPadding="0dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/mtrl_textinput_default_box_stroke_color"
+        app:iconTintMode="multiply" />
+
+    <Button
+        android:id="@+id/btnGallery"
+        android:layout_width="42dp"
+        android:layout_height="42dp"
+        android:layout_above="@+id/editTarefa"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_toEndOf="@+id/btnAddImagem"
+        android:background="#00FFFFFF"
+        android:isScrollContainer="false"
+        app:icon="@android:drawable/ic_menu_gallery"
+        app:iconGravity="textEnd"
+        app:iconPadding="0dp"
+        app:iconSize="40dp"
+        app:iconTint="@color/mtrl_textinput_default_box_stroke_color" />
+
+</RelativeLayout>

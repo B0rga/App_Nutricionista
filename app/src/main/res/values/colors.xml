@@ -5,5 +5,7 @@
 
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">#1C1C1C</color>
     <color name="cor_selecionada">#4169E1</color>
-    <color name="cor_padrao">#000000</color>
+    <color name="cor_padrao">#1C1C1C</color>
+    <color name="cor_BackMensagem">#fff3edf7</color>
+    <color name="cor_TextMensagem">#000000</color>
 </resources>
