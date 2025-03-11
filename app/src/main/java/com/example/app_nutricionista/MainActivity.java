@@ -8,36 +8,50 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_nutricionista.databinding.ActivityMainBinding;
+import java.util.HashMap;
+import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
+    private final Map<Integer, Fragment> fragments = new HashMap<>();
+    private Fragment activeFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        replaceFragment(new chat());
 
+        // Inicializa os fragments uma única vez
+        fragments.put(R.id.chatId, new chat());
+        fragments.put(R.id.dietaId, new dieta());
+        fragments.put(R.id.perfilId, new perfil());
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        // Adiciona todos os fragments ao container, mas esconde todos menos o primeiro
+        for (Fragment fragment : fragments.values()) {
+            transaction.add(R.id.frameLayout, fragment).hide(fragment);
+        }
+
+        // Mostra o fragment inicial (chat)
+        activeFragment = fragments.get(R.id.chatId);
+        transaction.show(activeFragment).commit();
+
+        // Configura o listener do BottomNavigationView
         binding.topNavigationView.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
-            if (itemId == R.id.chatId) {
-                replaceFragment(new chat());
-            } else if (itemId == R.id.dietaId) {
-                replaceFragment(new dieta());
-            } else if (itemId == R.id.perfilId) {
-                replaceFragment(new perfil());
+            Fragment selectedFragment = fragments.get(item.getItemId());
+
+            if (selectedFragment != null && selectedFragment != activeFragment) {
+                fragmentManager.beginTransaction()
+                        .hide(activeFragment)
+                        .show(selectedFragment)
+                        .commit();
+                activeFragment = selectedFragment;
             }
             return true;
         });
     }
-
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout,fragment);
-        fragmentTransaction.commit();
-    }
-
 }
