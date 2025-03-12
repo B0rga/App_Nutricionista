@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.speech.tts.TextToSpeech;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +38,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class chat extends Fragment {
 
@@ -47,10 +50,18 @@ public class chat extends Fragment {
     private Button btnGo, btnAddImagem, btnGallery;
     private LinearLayout chat;
     private ScrollView scroll;
+
+    // Variável global para armazenar o histórico de conversa:
     private List<Content> history;
+
+    // Variável que armazenará o caminho onde a imagem será salva
     private Uri imageUrl;
+
+    // API que permite iniciar uma atividade para obter um resultado (ex: tirar uma foto ou obter uma imagem da galeria)
     private ActivityResultLauncher<Uri> contract;
     private ActivityResultLauncher<String> galleryContract;
+
+    private TextToSpeech textToSpeech;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -145,16 +156,19 @@ public class chat extends Fragment {
         return view;
     }
 
+    // Method que cria uma Uri para a imagem e a armazena dentro do diretório interno do app
     public Uri createImageUri() {
         File image = new File(requireContext().getFilesDir(), "camera_photos.png");
         return FileProvider.getUriForFile(requireContext(), "com.example.app_nutricionista.FileProvider", image);
     }
 
+    // Method que converte uma imagem no formato Uri para Bitmap
     private Bitmap uriToBitmap(Uri imageUri) throws IOException {
         return MediaStore.Images.Media.getBitmap(requireActivity().getContentResolver(), imageUri);
 
     }
 
+    // Method para fazer a requisição da API do Gemini e gerar a resposta para o usuário
     public void CallGemini(){
         EsconderTexto();
         String tarefa = AdicionaTarefa();
@@ -219,6 +233,7 @@ public class chat extends Fragment {
         }
     }
 
+    // Method para fazer a requisição do Gemini quando receber fotos
     public void CallGeminiImage(){
         EsconderTexto();
         TextView textResposta = AdicionaResposta();
@@ -312,14 +327,52 @@ public class chat extends Fragment {
         return tarefa;
     }
 
+    // Method para adicionar a mensagem do modelo ao chat
     public TextView AdicionaResposta() {
         View resposta = getLayoutInflater().inflate(R.layout.resposta, null);
         TextView textResposta = resposta.findViewById(R.id.textResposta);
+        Button btnAudio = resposta.findViewById(R.id.btnAudio);
         chat.addView(resposta);
         textResposta.setText("...");
+
+        // Inicializa o TextToSpeech
+        textToSpeech = new TextToSpeech(requireActivity(), status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                // Define o idioma para Português do Brasil
+                int result = textToSpeech.setLanguage(new Locale("pt", "BR"));
+
+                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                    Log.e("TTS", "Idioma não suportado!");
+                } else {
+                    Log.d("TTS", "TextToSpeech inicializado com sucesso.");
+                }
+            } else {
+                Log.e("TTS", "Falha ao inicializar TextToSpeech.");
+            }
+        });
+
+        // Define a ação do botão para converter o texto em áudio
+        btnAudio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String text = textResposta.getText().toString();
+                textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
+            }
+        });
+
         return textResposta;
     }
 
+    @Override
+    public void onDestroy() {
+        if (textToSpeech != null) {
+            textToSpeech.stop();
+            textToSpeech.shutdown();
+        }
+        super.onDestroy();
+    }
+
+    // Method para verificar se o input está preenchido
     public boolean VerificaCampo() {
         if (editTarefa.length() == 0) {
             Toast.makeText(requireContext(), "Campo vazio!", Toast.LENGTH_LONG).show();
@@ -328,14 +381,17 @@ public class chat extends Fragment {
         return true;
     }
 
+    // Method para descer o scroll da conversa até o final (usado para o recebimento e envio de novas mensagens)
     public void DescerScroll() {
         scroll.postDelayed(() -> scroll.fullScroll(ScrollView.FOCUS_DOWN), 200);
     }
 
+    // Method para esconder o texto explicativo após o início da conversa
     public void EsconderTexto(){
         textoTemporario.setVisibility(View.GONE);
     }
 
+    // Method para limpar o input após o envio da mensagem
     public void LimpaCampo() {
         editTarefa.setText("");
     }

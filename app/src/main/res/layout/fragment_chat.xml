@@ -48,7 +48,7 @@
         android:ems="10"
         android:focusable="true"
         android:focusableInTouchMode="true"
-        android:hint="O que deseja?"
+        android:hint="Mensagem"
         android:inputType="text"
         android:onClick="Des"
         android:padding="12dp"

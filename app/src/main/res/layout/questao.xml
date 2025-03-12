@@ -10,8 +10,8 @@
         android:orientation="vertical">
 
         <TextView
-            android:background="@drawable/round_style_questao"
             android:id="@+id/textQuestao"
+            android:background="@drawable/round_style_questao"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
@@ -19,7 +19,7 @@
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="14dp"
             android:backgroundTint="@color/cor_selecionada"
-            android:maxWidth="380dp"
+            android:maxWidth="370dp"
             android:padding="10dp"
             android:text="Me conte uma piada Me conte uma piada Me conte uma piada Me conte uma piada Me conte uma piada vMe conte uma piadaMe conte uma piadaMe conte uma piadaMe conte uma piadaMe conte uma piada"
             android:textColor="@color/white"

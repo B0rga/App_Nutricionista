@@ -11,6 +11,7 @@
 
         <ImageView
             android:id="@+id/imagemComida"
+            android:background="@drawable/round_style_questao"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_gravity="end"
@@ -18,7 +19,6 @@
             android:layout_marginEnd="0dp"
             android:layout_marginBottom="14dp"
             android:backgroundTint="@color/cor_selecionada"
-            android:background="@drawable/round_style_questao"
             android:padding="10dp" />
     </LinearLayout>
 
