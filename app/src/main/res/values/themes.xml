@@ -6,4 +6,6 @@
     </style>
 
     <style name="Theme.App_Nutricionista" parent="Base.Theme.App_Nutricionista" />
+    <style name="ThemeOverlay.App_Nutricionista.FullscreenContainer" parent="">
+    </style>
 </resources>

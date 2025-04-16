@@ -1,10 +1,118 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".login">
+    android:fitsSystemWindows="true"
+    tools:context=".login"
+    android:padding="24dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Email"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/cor_selecionada"
+        app:hintTextColor="@color/hint_color"
+        app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInput"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Senha"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/cor_selecionada"
+        app:hintTextColor="@color/hint_color"
+        app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/senhaInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Link: Esqueci minha senha -->
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordLayout"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="24dp"
+        android:text="Esqueci minha senha"
+        android:textColor="@color/cor_selecionada"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <!-- Botão de Login -->
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/forgotPassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/cor_selecionada"
+        android:text="Entrar"
+        android:textColor="@android:color/white" />
+
+    <!-- Link: Não tenho cadastro -->
+    <TextView
+        android:id="@+id/noAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/loginButton"
+        android:layout_marginTop="16dp"
+        android:text="Não tenho cadastro"
+        android:textColor="@color/cor_selecionada"
+        android:textSize="14sp"
+        android:layout_marginStart="24dp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="64dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/nutri_logo" />
+
+</RelativeLayout>

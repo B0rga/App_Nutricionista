@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="18dp"
-                android:text="Inice a conversa para receber seu atendimento nutricional personalizado\n\nEnvie fotos do pratos de comida para saber os nutrientes e calorias envolvidas"
+                android:text="Inice a conversa para receber seu atendimento nutricional personalizado\n\nEnvie fotos do pratos de comida para saber os nutrientes e calorias envolvidas\n\nClique no ícone de som abaixo da mensagem para o texto ser falado"
                 android:textAlignment="viewStart"
                 android:textColor="#7A7A7A"
                 android:textSize="18sp"

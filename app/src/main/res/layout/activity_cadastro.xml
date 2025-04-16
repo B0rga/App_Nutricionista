@@ -1,10 +1,128 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
+    android:id="@+id/register"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:padding="24dp"
     tools:context=".cadastro">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/nutri_logo" />
+
+    <!-- Campo Nome -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Nome"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/cor_selecionada"
+        app:hintTextColor="@color/hint_color"
+        app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo Email -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/emailLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Email"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/cor_selecionada"
+        app:hintTextColor="@color/hint_color"
+        app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/emailInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Campo Senha -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/emailLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="24dp"
+        android:hint="Senha"
+        app:boxBackgroundMode="outline"
+        app:boxStrokeColor="@color/cor_selecionada"
+        app:hintTextColor="@color/hint_color"
+        app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/senhaInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Botão Cadastrar -->
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/passwordLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/cor_selecionada"
+        android:text="Cadastrar"
+        android:textColor="@android:color/white" />
+
+    <!-- Link: Já tenho conta -->
+    <TextView
+        android:id="@+id/alreadyHaveAccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/registerButton"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="Já tenho uma conta"
+        android:textColor="@color/cor_selecionada"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

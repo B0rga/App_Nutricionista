@@ -356,6 +356,7 @@ public class chat extends Fragment {
             @Override
             public void onClick(View v) {
                 String text = textResposta.getText().toString();
+                textToSpeech.setSpeechRate(1.2f);
                 textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, null);
             }
         });
