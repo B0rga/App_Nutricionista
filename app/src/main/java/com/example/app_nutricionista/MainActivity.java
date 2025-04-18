@@ -8,6 +8,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.app_nutricionista.databinding.ActivityMainBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,11 +20,22 @@ public class MainActivity extends AppCompatActivity {
     private final Map<Integer, Fragment> fragments = new HashMap<>();
     private Fragment activeFragment;
 
+    private FirebaseAuth auth;
+
+    // Instanciando a classe que representa o perfil do usuário cadastrado no banco de dados
+    private FirebaseUser user;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Instanciando a classe de autenticação do Firebase
+        auth = FirebaseAuth.getInstance();
+
+        // Recebendo o usuário atual baseado no processo de autenticação
+        user = auth.getCurrentUser();
 
         // Inicializa os fragments uma única vez
         fragments.put(R.id.chatId, new chat());

@@ -6,11 +6,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".login"
-    android:padding="24dp">
+    android:orientation="vertical"
+    tools:context=".Login">
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="64dp"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/nutri_logo" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/emailLayout"
+        android:id="@+id/layoutEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView4"
@@ -26,7 +39,7 @@
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/emailInput"
+            android:id="@+id/editEmail"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -35,10 +48,10 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/passwordLayout"
+        android:id="@+id/layoutSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/emailLayout"
+        android:layout_below="@id/layoutEmail"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
@@ -51,7 +64,7 @@
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/senhaInput"
+            android:id="@+id/editSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -65,7 +78,7 @@
         android:id="@+id/forgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/passwordLayout"
+        android:layout_below="@id/layoutSenha"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="14dp"
         android:layout_marginEnd="24dp"
@@ -76,7 +89,7 @@
 
     <!-- Botão de Login -->
     <Button
-        android:id="@+id/loginButton"
+        android:id="@+id/btnRealizarLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/forgotPassword"
@@ -91,28 +104,15 @@
 
     <!-- Link: Não tenho cadastro -->
     <TextView
-        android:id="@+id/noAccount"
+        android:id="@+id/btnIrParaCadastro"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/loginButton"
+        android:layout_below="@id/btnRealizarLogin"
         android:layout_marginTop="16dp"
         android:text="Não tenho cadastro"
         android:textColor="@color/cor_selecionada"
         android:textSize="14sp"
         android:layout_marginStart="24dp"
         android:textStyle="bold" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginEnd="64dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/nutri_logo" />
 
 </RelativeLayout>

@@ -1,15 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainPerfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".perfil">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="perfil" />
+        android:layout_height="match_parent">
 
-</FrameLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="200dp">
+
+            <TextView
+                android:id="@+id/tvBemVindo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Bem vindo, Usuário!"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:textColor="@color/cor_selecionada"
+                android:gravity="left" />
+
+            <EditText
+                android:id="@+id/editNome"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvBemVindo"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="32dp"
+                android:hint="Nome"
+                android:inputType="textPersonName"
+                android:padding="12dp"
+                android:textColorHint="@color/hint_color"
+                android:backgroundTint="@color/edit_text_color_focus"/>
+
+            <EditText
+                android:id="@+id/editEmail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editNome"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:padding="12dp"
+                android:textColorHint="@color/hint_color"
+                android:backgroundTint="@color/edit_text_color_focus"/>
+
+            <EditText
+                android:id="@+id/editNascimento"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editEmail"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:hint="Data de Nascimento"
+                android:inputType="date"
+                android:padding="12dp"
+                android:textColorHint="@color/hint_color"
+                android:backgroundTint="@color/edit_text_color_focus"/>
+
+            <EditText
+                android:id="@+id/editPeso"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editNascimento"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:hint="Peso (kg)"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:textColorHint="@color/hint_color"
+                android:backgroundTint="@color/edit_text_color_focus"/>
+
+            <EditText
+                android:id="@+id/editAltura"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editPeso"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="20dp"
+                android:hint="Altura (cm)"
+                android:inputType="numberDecimal"
+                android:padding="12dp"
+                android:textColorHint="@color/hint_color"
+                android:backgroundTint="@color/edit_text_color_focus"/>
+
+            <Button
+                android:id="@+id/btnRedefinirSenha"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/editAltura"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="@color/cor_selecionada"
+                android:text="Redefinir Senha"
+                android:textColor="@android:color/white" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSair"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnRedefinirSenha"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/btn_apenas_borda"
+                android:backgroundTint="@null"
+                android:text="Sair"
+                android:textStyle="bold"
+                android:textAllCaps="false"
+                android:textColor="@color/cor_selecionada"/>
+
+        </RelativeLayout>
+
+    </ScrollView>
+</RelativeLayout>
