@@ -13,17 +13,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.Objects;
 
 public class Login extends AppCompatActivity {
 
@@ -32,17 +28,7 @@ public class Login extends AppCompatActivity {
     private TextView btnIrParaCadastro;
     private Button btnRealizarLogin;
 
-    private FirebaseAuth mAuth;
-
-    // Method que irá verificar se o usuário já está conectado, para então redirecioná-lo direto para a Home
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            IrParaTelaInicial();
-        }
-    }
+    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +36,17 @@ public class Login extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
 
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            IrParaTelaInicial();
+        }
+
         editEmail = findViewById(R.id.editEmail);
         editSenha = findViewById(R.id.editSenha);
         layoutEmail = findViewById(R.id.layoutEmail);
         layoutSenha = findViewById(R.id.layoutSenha);
         btnRealizarLogin = findViewById(R.id.btnRealizarLogin);
         btnIrParaCadastro = findViewById(R.id.btnIrParaCadastro);
-
-        mAuth = FirebaseAuth.getInstance();
 
         btnRealizarLogin.setOnClickListener(new View.OnClickListener() {
             @Override
