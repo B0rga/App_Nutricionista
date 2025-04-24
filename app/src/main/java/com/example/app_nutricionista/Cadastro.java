@@ -32,12 +32,12 @@ public class Cadastro extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_cadastro);
 
-        editNome = findViewById(R.id.editNome);
-        editEmail = findViewById(R.id.editEmail);
-        editSenha = findViewById(R.id.editSenha);
         layoutNome = findViewById(R.id.layoutNome);
         layoutEmail = findViewById(R.id.layoutEmail);
         layoutSenha = findViewById(R.id.layoutSenha);
+        editNome = findViewById(R.id.editNome);
+        editEmail = findViewById(R.id.editEmail);
+        editSenha = findViewById(R.id.editSenha);
         btnIrParaLogin = findViewById(R.id.btnIrParaLogin);
         btnCadastrar = findViewById(R.id.btnCadastrar);
 
@@ -76,7 +76,7 @@ public class Cadastro extends AppCompatActivity {
                         database = FirebaseDatabase.getInstance();
                         reference = database.getReference("Users");
 
-                        HelperClass helperClass = new HelperClass(nome, email, senha);
+                        HelperClass helperClass = new HelperClass(nome, email);
 
                         reference.child(uid).setValue(helperClass)
                                 .addOnCompleteListener(task1 -> {

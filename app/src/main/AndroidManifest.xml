@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_Nutricionista"
         tools:targetApi="31">
+        <activity
+            android:name=".RedefinirSenha"
+            android:exported="false" />
         <activity
             android:name=".Cadastro"
             android:exported="false" />
@@ -28,16 +31,17 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:windowSoftInputMode="adjustResize"
-            android:exported="false">
-        </activity>
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"></activity>
+
         <provider
-            android:authorities="com.example.app_nutricionista.FileProvider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.app_nutricionista.FileProvider"
             android:exported="false"
             android:grantUriPermissions="true">
-            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths"/>
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
         </provider>
     </application>
 

@@ -102,7 +102,7 @@
                 android:textColor="@android:color/white" />
 
             <Button
-                android:id="@+id/btnRedefinirSenha"
+                android:id="@+id/btnIrParaRedefinicaoSenha"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnSalvar"
@@ -116,7 +116,7 @@
                 android:id="@+id/btnSair"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btnRedefinirSenha"
+                android:layout_below="@id/btnIrParaRedefinicaoSenha"
                 android:layout_alignParentStart="true"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/btn_apenas_borda"

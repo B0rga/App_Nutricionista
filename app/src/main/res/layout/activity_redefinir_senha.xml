@@ -6,85 +6,88 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".Cadastro">
+    tools:context=".RedefinirSenha">
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="match_parent"
+    <TextView
+        android:id="@+id/textTitulo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/nutri_logo" />
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="150dp"
+        android:gravity="center"
+        android:text="Redefinir Senha"
+        android:textColor="@color/cor_selecionada"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutNome"
+        android:id="@+id/layoutSenhaAtual"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imageView4"
+        android:layout_below="@id/textTitulo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
-        android:hint="Nome"
+        android:hint="Senha atual"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/cor_selecionada"
         app:hintTextColor="@color/hint_color"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editNome"
+            android:id="@+id/editSenhaAtual"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"
+            android:inputType="textPassword"
             android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutEmail"
+        android:id="@+id/layoutNovaSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layoutNome"
+        android:layout_below="@id/layoutSenhaAtual"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
-        android:hint="Email"
+        android:hint="Nova Senha"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/cor_selecionada"
         app:hintTextColor="@color/hint_color"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editEmail"
+            android:id="@+id/editNovaSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/layoutSenha"
+        android:id="@+id/layoutRepetirNovaSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layoutEmail"
+        android:layout_below="@id/layoutNovaSenha"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
-        android:hint="Senha"
+        android:hint="Repetir nova senha"
         app:boxBackgroundMode="outline"
         app:boxStrokeColor="@color/cor_selecionada"
         app:hintTextColor="@color/hint_color"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/editSenha"
+            android:id="@+id/editRepetirNovaSenha"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
@@ -92,30 +95,17 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnCadastrar"
+        android:id="@+id/btnRedefinirSenha"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/layoutSenha"
+        android:layout_below="@id/layoutRepetirNovaSenha"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
         android:backgroundTint="@color/cor_selecionada"
-        android:text="Cadastrar"
+        android:text="Redefinir"
         android:textColor="@android:color/white" />
-
-    <TextView
-        android:id="@+id/btnIrParaLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/btnCadastrar"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="Já tenho uma conta"
-        android:textColor="@color/cor_selecionada"
-        android:textSize="14sp"
-        android:textStyle="bold" />
 
 </RelativeLayout>

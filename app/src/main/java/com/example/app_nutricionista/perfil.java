@@ -1,5 +1,6 @@
 package com.example.app_nutricionista;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,7 +25,7 @@ import com.google.firebase.database.ValueEventListener;
 public class perfil extends Fragment {
 
     private EditText editNome, editEmail, editNascimento, editPeso, editAltura;
-    private Button btnSalvar, btnRedefinirSenha, btnSair;
+    private Button btnSalvar, btnIrParaRedefinicaoSenha, btnSair;
     private TextView textBemVindo;
 
     private FirebaseUser user;
@@ -40,7 +41,7 @@ public class perfil extends Fragment {
         editNascimento = view.findViewById(R.id.editNascimento);
         editPeso = view.findViewById(R.id.editPeso);
         btnSalvar = view.findViewById(R.id.btnSalvar);
-        btnRedefinirSenha = view.findViewById(R.id.btnRedefinirSenha);
+        btnIrParaRedefinicaoSenha = view.findViewById(R.id.btnIrParaRedefinicaoSenha);
         btnSair = view.findViewById(R.id.btnSair);
         textBemVindo = view.findViewById(R.id.textBemVindo);
 
@@ -53,6 +54,21 @@ public class perfil extends Fragment {
         } else {
             Toast.makeText(getContext(), "Usuário não autenticado", Toast.LENGTH_SHORT).show();
         }
+
+        btnSair.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ConfirmarLogout();
+            }
+        });
+
+        btnIrParaRedefinicaoSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IrParaRedefinicaoSenha();
+            }
+        });
+
         return view;
     }
 
@@ -61,7 +77,7 @@ public class perfil extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    String nome = snapshot.child("name").getValue(String.class);
+                    String nome = snapshot.child("nome").getValue(String.class);
                     String email = snapshot.child("email").getValue(String.class);
                     //String nascimento = snapshot.child("nascimento").getValue(String.class);
                     //String peso = snapshot.child("peso").getValue(String.class);
@@ -85,4 +101,26 @@ public class perfil extends Fragment {
         });
     }
 
+    private void ConfirmarLogout() {
+        new androidx.appcompat.app.AlertDialog.Builder(requireContext())
+                .setTitle("Sair da conta")
+                .setMessage("Tem certeza que deseja sair?")
+                .setPositiveButton("Sair", (dialog, which) -> {
+                    FirebaseAuth.getInstance().signOut();
+                    IrParaLogin();
+                })
+                .setNegativeButton("Cancelar", null)
+                .show();
+    }
+
+    public void IrParaLogin(){
+        Intent intent = new Intent(getActivity(), Login.class);
+        startActivity(intent);
+        requireActivity().finish();
+    }
+
+    public void IrParaRedefinicaoSenha(){
+        Intent intent = new Intent(getActivity(), RedefinirSenha.class);
+        startActivity(intent);
+    }
 }
