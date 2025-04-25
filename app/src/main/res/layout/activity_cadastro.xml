@@ -118,7 +118,7 @@
         android:layout_marginTop="16dp"
         android:text="Já tenho uma conta"
         android:textColor="@color/cor_selecionada"
-        android:textSize="14sp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
 </RelativeLayout>

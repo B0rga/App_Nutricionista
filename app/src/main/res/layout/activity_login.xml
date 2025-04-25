@@ -109,11 +109,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/btnRealizarLogin"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:text="Não tenho cadastro"
         android:textColor="@color/cor_selecionada"
-        android:textSize="14sp"
-        android:layout_marginStart="24dp"
+        android:textSize="16sp"
         android:textStyle="bold" />
 
 </RelativeLayout>
