@@ -37,7 +37,9 @@
         app:itemIconTint="@color/top_nav_text_color"
         app:itemPaddingBottom="20dp"
         app:itemTextColor="@color/top_nav_text_color"
-        app:menu="@menu/top_nav_menu" />
+        app:menu="@menu/top_nav_menu"
+        app:itemTextAppearanceActive="@style/BottomNavTextStyle"
+        app:itemTextAppearanceInactive="@style/BottomNavTextStyle" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
