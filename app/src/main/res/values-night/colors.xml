@@ -6,4 +6,5 @@
     <color name="cor_padrao">#c0c0c0</color>
     <color name="cor_BackMensagem">#201E25</color>
     <color name="cor_TextMensagem" >#FFFFFF</color>
+    <color name="nao_selecionado">#7A7A7A</color>
 </resources>

@@ -7,4 +7,7 @@
     <style name="ThemeOverlay.AppTheme.TextInputEditText.Outlined" parent="">
         <item name="colorPrimary">@color/cor_selecionada</item>
     </style>
+    <style name="CustomHintTextAppearance" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/hint_selector</item>
+    </style>
 </resources>

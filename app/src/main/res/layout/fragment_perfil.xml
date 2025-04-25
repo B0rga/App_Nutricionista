@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/mainPerfil"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,7 +13,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:paddingBottom="200dp">
 
             <TextView
@@ -23,110 +24,139 @@
                 android:textSize="30sp"
                 android:textStyle="bold"
                 android:textColor="@color/cor_selecionada"
-                android:gravity="left" />
+                android:layout_marginTop="16dp" />
 
-            <EditText
-                android:id="@+id/editNome"
-                android:layout_width="300dp"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutNome"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textBemVindo"
-                android:layout_alignParentStart="true"
                 android:layout_marginTop="32dp"
                 android:hint="Nome"
-                android:inputType="textPersonName"
-                android:padding="12dp"
-                android:textColorHint="@color/hint_color"
-                android:backgroundTint="@color/edit_text_color_focus"/>
+                android:textColorHint="@color/hint_selector"
+                app:hintTextColor="@color/edit_text_color_focus"
+                app:boxBackgroundMode="none">
 
-            <EditText
-                android:id="@+id/editEmail"
-                android:layout_width="300dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editNome"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutEmail"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editNome"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/layoutNome"
+                android:layout_marginTop="16dp"
                 android:hint="Email"
-                android:inputType="textEmailAddress"
-                android:padding="12dp"
-                android:textColorHint="@color/hint_color"
-                android:backgroundTint="@color/edit_text_color_focus"/>
+                android:textColorHint="@color/hint_selector"
+                app:hintTextColor="@color/edit_text_color_focus"
+                app:boxBackgroundMode="none">
 
-            <EditText
-                android:id="@+id/editNascimento"
-                android:layout_width="300dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutNascimento"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editEmail"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/layoutEmail"
+                android:layout_marginTop="16dp"
                 android:hint="Data de Nascimento"
-                android:inputType="date"
-                android:padding="12dp"
-                android:textColorHint="@color/hint_color"
-                android:backgroundTint="@color/edit_text_color_focus"/>
+                android:textColorHint="@color/hint_selector"
+                app:hintTextColor="@color/edit_text_color_focus"
+                app:boxBackgroundMode="none">
 
-            <EditText
-                android:id="@+id/editPeso"
-                android:layout_width="300dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editNascimento"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutPeso"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editNascimento"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/layoutNascimento"
+                android:layout_marginTop="16dp"
                 android:hint="Peso (kg)"
-                android:inputType="numberDecimal"
-                android:padding="12dp"
-                android:textColorHint="@color/hint_color"
-                android:backgroundTint="@color/edit_text_color_focus"/>
+                android:textColorHint="@color/hint_selector"
+                app:hintTextColor="@color/edit_text_color_focus"
+                app:boxBackgroundMode="none">
 
-            <EditText
-                android:id="@+id/editAltura"
-                android:layout_width="300dp"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editPeso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/layoutAltura"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editPeso"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="20dp"
+                android:layout_below="@id/layoutPeso"
+                android:layout_marginTop="16dp"
                 android:hint="Altura (cm)"
-                android:inputType="numberDecimal"
-                android:padding="12dp"
-                android:textColorHint="@color/hint_color"
-                android:backgroundTint="@color/edit_text_color_focus"/>
+                android:textColorHint="@color/hint_selector"
+                app:hintTextColor="@color/edit_text_color_focus"
+                app:boxBackgroundMode="none">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editAltura"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"/>
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
                 android:id="@+id/btnSalvar"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/editAltura"
-                android:layout_alignParentStart="true"
+                android:layout_below="@id/layoutAltura"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/cor_selecionada"
                 android:text="Salvar"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:layout_marginHorizontal="10dp"/>
 
             <Button
                 android:id="@+id/btnIrParaRedefinicaoSenha"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnSalvar"
-                android:layout_alignParentStart="true"
                 android:layout_marginTop="40dp"
                 android:backgroundTint="@color/cor_selecionada"
                 android:text="Redefinir Senha"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:layout_marginHorizontal="10dp"/>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSair"
-                android:layout_width="200dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btnIrParaRedefinicaoSenha"
-                android:layout_alignParentStart="true"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/btn_apenas_borda"
                 android:backgroundTint="@null"
                 android:text="Sair"
                 android:textStyle="bold"
                 android:textAllCaps="false"
-                android:textColor="@color/cor_selecionada"/>
+                android:textColor="@color/cor_selecionada"
+                android:layout_marginHorizontal="10dp"/>
 
         </RelativeLayout>
-
     </ScrollView>
 </RelativeLayout>

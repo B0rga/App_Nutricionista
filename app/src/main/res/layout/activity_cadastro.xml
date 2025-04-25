@@ -31,8 +31,9 @@
         android:layout_marginEnd="24dp"
         android:hint="Nome"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/cor_selecionada"
-        app:hintTextColor="@color/hint_color"
+        app:boxStrokeColor="@color/edit_text_color_focus"
+        android:textColorHint="@color/hint_selector"
+        app:hintTextColor="@color/edit_text_color_focus"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -55,8 +56,9 @@
         android:layout_marginEnd="24dp"
         android:hint="Email"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/cor_selecionada"
-        app:hintTextColor="@color/hint_color"
+        app:boxStrokeColor="@color/edit_text_color_focus"
+        android:textColorHint="@color/hint_selector"
+        app:hintTextColor="@color/edit_text_color_focus"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -79,8 +81,9 @@
         android:layout_marginEnd="24dp"
         android:hint="Senha"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/cor_selecionada"
-        app:hintTextColor="@color/hint_color"
+        app:boxStrokeColor="@color/edit_text_color_focus"
+        android:textColorHint="@color/hint_selector"
+        app:hintTextColor="@color/edit_text_color_focus"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText

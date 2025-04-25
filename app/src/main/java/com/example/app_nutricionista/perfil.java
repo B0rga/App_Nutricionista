@@ -29,8 +29,8 @@ public class perfil extends Fragment {
     private TextView textBemVindo;
 
     private FirebaseUser user;
-    private String uid;
     private DatabaseReference userRef;
+    private String uid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class perfil extends Fragment {
         editNome = view.findViewById(R.id.editNome);
         editEmail = view.findViewById(R.id.editEmail);
         editNascimento = view.findViewById(R.id.editNascimento);
+        editAltura = view.findViewById(R.id.editAltura);
         editPeso = view.findViewById(R.id.editPeso);
         btnSalvar = view.findViewById(R.id.btnSalvar);
         btnIrParaRedefinicaoSenha = view.findViewById(R.id.btnIrParaRedefinicaoSenha);
@@ -69,6 +70,13 @@ public class perfil extends Fragment {
             }
         });
 
+        btnSalvar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Salvar();
+            }
+        });
+
         return view;
     }
 
@@ -79,17 +87,18 @@ public class perfil extends Fragment {
                 if (snapshot.exists()) {
                     String nome = snapshot.child("nome").getValue(String.class);
                     String email = snapshot.child("email").getValue(String.class);
-                    //String nascimento = snapshot.child("nascimento").getValue(String.class);
-                    //String peso = snapshot.child("peso").getValue(String.class);
-                    //String altura = snapshot.child("altura").getValue(String.class);
+                    String nascimento = snapshot.child("nascimento").getValue(String.class);
+                    String peso = snapshot.child("peso").getValue(String.class);
+                    String altura = snapshot.child("altura").getValue(String.class);
 
-                    String primeiroNome = nome.split(" ")[0];
+                    String primeiroNome = nome != null ? nome.split(" ")[0] : "";
                     textBemVindo.setText("Bem vindo, " + primeiroNome +"!");
-                    editNome.setText(nome);
-                    editEmail.setText(email);
-                    //editNascimento.setText(nascimento);
-                    //editPeso.setText(peso);
-                    //editAltura.setText(altura);
+
+                    editNome.setText(nome != null ? nome : "");
+                    editEmail.setText(email != null ? email : "");
+                    editNascimento.setText(nascimento != null ? nascimento : "");
+                    editPeso.setText(peso != null ? peso : "");
+                    editAltura.setText(altura != null ? altura : "");
                 } else {
                     Toast.makeText(getContext(), "Existem dados pendentes", Toast.LENGTH_SHORT).show();
                 }
@@ -99,6 +108,25 @@ public class perfil extends Fragment {
                 Toast.makeText(getContext(), "Erro ao carregar dados", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    public void Salvar(){
+        String nome = editNome.getText().toString().trim();
+        String nascimento = editNascimento.getText().toString().trim();
+        String peso = editPeso.getText().toString().trim();
+        String altura = editAltura.getText().toString().trim();
+
+        if (nome.isEmpty() || nascimento.isEmpty() || peso.isEmpty() || altura.isEmpty()) {
+            Toast.makeText(getContext(), "Preencha todos os campos", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        userRef.child("nome").setValue(nome);
+        userRef.child("nascimento").setValue(nascimento);
+        userRef.child("peso").setValue(peso);
+        userRef.child("altura").setValue(altura);
+
+        Toast.makeText(getContext(), "Dados atualizados com sucesso!", Toast.LENGTH_SHORT).show();
     }
 
     private void ConfirmarLogout() {
@@ -123,4 +151,5 @@ public class perfil extends Fragment {
         Intent intent = new Intent(getActivity(), RedefinirSenha.class);
         startActivity(intent);
     }
+
 }

@@ -8,4 +8,5 @@
     <color name="cor_padrao">#1C1C1C</color>
     <color name="cor_BackMensagem">#fff3edf7</color>
     <color name="cor_TextMensagem">#000000</color>
+    <color name="nao_selecionado">#7A7A7A</color>
 </resources>

@@ -33,9 +33,10 @@
         android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
         android:hint="Email"
+        android:textColorHint="@color/hint_selector"
+        app:hintTextColor="@color/edit_text_color_focus"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/cor_selecionada"
-        app:hintTextColor="@color/hint_color"
+        app:boxStrokeColor="@color/edit_text_color_focus"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
@@ -58,24 +59,24 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="24dp"
         android:hint="Senha"
+        android:textColorHint="@color/hint_selector"
+        app:hintTextColor="@color/edit_text_color_focus"
         app:boxBackgroundMode="outline"
-        app:boxStrokeColor="@color/cor_selecionada"
-        app:hintTextColor="@color/hint_color"
+        app:boxStrokeColor="@color/edit_text_color_focus"
         app:shapeAppearanceOverlay="@style/CustomTextInputStyle">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editSenha"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"
-            />
+            android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Link: Esqueci minha senha -->
     <TextView
-        android:id="@+id/forgotPassword"
+        android:id="@+id/btnEsqueciMinhaSenha"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutSenha"
@@ -92,7 +93,7 @@
         android:id="@+id/btnRealizarLogin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/forgotPassword"
+        android:layout_below="@id/btnEsqueciMinhaSenha"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="24dp"

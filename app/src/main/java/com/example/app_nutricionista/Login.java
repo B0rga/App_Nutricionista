@@ -25,7 +25,7 @@ public class Login extends AppCompatActivity {
 
     private TextInputLayout layoutEmail, layoutSenha;
     private TextInputEditText editEmail, editSenha;
-    private TextView btnIrParaCadastro;
+    private TextView btnIrParaCadastro, btnEsqueciMinhaSenha;
     private Button btnRealizarLogin;
 
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
@@ -47,6 +47,7 @@ public class Login extends AppCompatActivity {
         layoutSenha = findViewById(R.id.layoutSenha);
         btnRealizarLogin = findViewById(R.id.btnRealizarLogin);
         btnIrParaCadastro = findViewById(R.id.btnIrParaCadastro);
+        btnEsqueciMinhaSenha = findViewById(R.id.btnEsqueciMinhaSenha);
 
         btnRealizarLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +62,13 @@ public class Login extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 IrParaCadastro();
+            }
+        });
+
+        btnEsqueciMinhaSenha.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EsqueciMinhaSenha();
             }
         });
     }
@@ -115,6 +123,11 @@ public class Login extends AppCompatActivity {
 
     public void IrParaCadastro(){
         Intent intent = new Intent(Login.this, Cadastro.class);
+        startActivity(intent);
+    }
+
+    public void EsqueciMinhaSenha(){
+        Intent intent = new Intent(Login.this, EsqueciMinhaSenha.class);
         startActivity(intent);
     }
 
