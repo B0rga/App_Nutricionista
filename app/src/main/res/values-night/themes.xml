@@ -6,4 +6,10 @@
     </style>
     <style name="ThemeOverlay.App_Nutricionista.FullscreenContainer" parent="">
     </style>
+
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- SplashScreen -->
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
 </resources>
