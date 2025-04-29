@@ -26,15 +26,16 @@
         android:id="@+id/textDescricao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/textTitulo"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
-        android:layout_below="@id/textTitulo"
         android:layout_marginHorizontal="30dp"
-        android:gravity="center"
         android:layout_marginTop="8dp"
+        android:gravity="center"
         android:text="Insira seu email para receber a mensagem de redefinição de senha"
         android:textColor="@color/cor_selecionada"
-        android:textSize="18sp"/>
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layoutEmail"

@@ -7,4 +7,5 @@
     <color name="cor_BackMensagem">#201E25</color>
     <color name="cor_TextMensagem" >#FFFFFF</color>
     <color name="nao_selecionado">#7A7A7A</color>
+    <color name="splash_background_color">#121212</color>
 </resources>

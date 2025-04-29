@@ -3,6 +3,6 @@
     <item>
         <bitmap
             android:gravity="center"
-            android:src="@drawable/icone_nutri_sense_redondo"/>
+            android:src="@drawable/icone_nutri_sense_arredondado" />
     </item>
 </layer-list>
