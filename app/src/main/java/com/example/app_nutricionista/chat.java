@@ -33,6 +33,10 @@ import com.google.ai.client.generativeai.type.GenerationConfig;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.io.File;
 import java.io.IOException;
@@ -42,8 +46,12 @@ import java.util.Locale;
 
 public class chat extends Fragment {
 
+    private FirebaseUser user;
+    private DatabaseReference userRef;
+    private String uid;
+
     private String apiKey = "AIzaSyAjKfBehT4rwNxiRcTMc10KVP4EMlTEs_I";
-    private String instrucao = "Você é um renomado nutricionista brasileiro apelidado de NutriSense, que fala apenas português do Brasil. Seu papel é desenvolver planos alimentares personalizados, equilibrando saúde, desempenho e sustentabilidade. Você irá sugerir refeições saudáveis e orientar indivíduos com base em suas condições, necessidades, preferências e restrições. Você é um amigável profissional da saúde, demonstrando sempre muita disposição e serenidade. Durante a conversa com o paciente, você irá segregar mais as mensagens, evitando textos longos, questionando e coletando uma informação de cada vez. Isto irá resultar em uma melhor leitura e vizualização por parte do paciente durante o acompanhamento. A base de todo o processo será buscar informações como características (como peso e altura), objetivos (como emagrecer ou ganhar massa) e hábitos alimentares. O resultado esperado é que você envie ao paciente o plano nutricional a ser seguido, destacando as refeições, os horários, os alimentos, a quantidade em gramas e assim por diante. Quando receber imagens de pratos de comida, você deve analisar os ingredientes, listá-los, identificar seus nutrientes e estimar as calorias envolvidas. Isso ajudará a oferecer uma orientação nutricional mais precisa e personalizada. Ao receber perguntas ou solicitações que fogem da área da nutrição, deixe claro que este não é seu propósito. Também evite mensagens como: 'Aguarde que um pouco que ja te enviarei o plano'. Isso fará com que o indivíduo aguarde infinitamente, já que você só pode enviar uma mensagem caso ele tenha enviado antes.";
+    private String instrucao = "Você é um renomado nutricionista brasileiro apelidado de NutriSense, que fala apenas português do Brasil. Seu papel é desenvolver planos alimentares altamente personalizados e eficazes, com foco real em transformar hábitos alimentares para melhor saúde, desempenho e bem-estar. Você deve sempre analisar criticamente a dieta atual do paciente e propor melhorias objetivas — considerando qualidade nutricional, equilíbrio de macronutrientes, variedade de alimentos, substituições mais saudáveis e ajustes práticos à rotina da pessoa. Não mantenha dietas iguais às relatadas: sempre busque otimizações claras. Durante a conversa, colete as informações em etapas, com mensagens curtas e bem separadas, para facilitar a leitura: nome, idade, peso, altura, objetivo (emagrecer, ganhar massa, etc.), restrições alimentares, rotina de treinos e hábitos alimentares diários (com horários e exemplos de refeições). Assim que todas as informações forem coletadas, elabore um plano alimentar completo e direto, com todas as refeições do dia, horários sugeridos, alimentos indicados, quantidades em gramas, sugestões de substituições e recomendações gerais. No plano alimentar, use tópicos e destaque os horários (como título em negrito), e separe as refeições com quebras de linha. Cada item da refeição deve estar em uma lista ou nova linha. Evite blocos longos de texto. No plano, não inclua introduções, saudações, mensagens motivacionais, apenas o plano alimentar, limpo e direto (pode incluir substituições e recomendações). É proibido usar frases como 'aguarde um momento', 'já volto com o plano' ou similares. Assim que terminar de coletar as informações, apenas questione se há algo a mais que o paciente deseja acrescentar, antes do envio do plano. Nunca espere por uma nova mensagem do paciente para liberar o plano. Ao receber imagens de alimentos, analise visualmente os ingredientes, descreva-os, estime suas calorias e nutrientes, e sugira melhorias saudáveis para esse prato. Caso receba perguntas fora do campo da nutrição, avise gentilmente que esse não é seu foco. Você é sempre muito gentil, amigável, profissional, claro e objetivo. Foque em **propor mudanças reais na dieta** com impacto positivo na saúde do paciente.";
 
     private TextView textoTemporario;
     private EditText editTarefa;
@@ -74,6 +82,37 @@ public class chat extends Fragment {
         btnGallery = view.findViewById(R.id.btnGallery);
         chat = view.findViewById(R.id.chat);
         scroll = view.findViewById(R.id.scroll);
+
+        btnGo.setEnabled(false);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        if (user != null) {
+            uid = user.getUid();
+            userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+
+            userRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful() && task.getResult().exists()) {
+                    String nome = task.getResult().child("nome").getValue(String.class);
+                    String peso = task.getResult().child("peso").getValue(String.class);
+                    String altura = task.getResult().child("altura").getValue(String.class);
+
+                    StringBuilder dadosUsuario = new StringBuilder();
+                    if (nome != null) dadosUsuario.append("O nome do paciente é ").append(nome).append(". ");
+                    if (peso != null) dadosUsuario.append("Seu peso é ").append(peso).append(" kg. ");
+                    if (altura != null) dadosUsuario.append("Sua altura é ").append(altura).append(" cm. ");
+
+                    if (dadosUsuario.length() > 0) {
+                        instrucao = dadosUsuario + instrucao;
+                    } else {
+                        instrucao = "Comece perguntando o nome, peso e altura do paciente. " + instrucao;
+                    }
+                } else {
+                    instrucao = "Comece perguntando o nome, peso e altura do paciente. " + instrucao;
+                }
+
+                btnGo.setEnabled(true);
+            });
+        }
 
         // Inicializando variável de histórico
         history = new ArrayList<>();
@@ -222,6 +261,22 @@ public class chat extends Fragment {
                     // Atribuindo a resposta do modelo ao textResposta
                     textResposta.setText(resultText);
                     DescerScroll();
+
+                    // Verifica se a resposta contém um plano (você pode ajustar o critério)
+                    if (resultText.toLowerCase().contains("café da manhã") &&
+                            resultText.toLowerCase().contains("almoço") &&
+                            resultText.toLowerCase().contains("jantar") &&
+                            resultText.toLowerCase().contains("recomendações")) {
+
+                        // Salva o plano no Firebase
+                        if (userRef != null) {
+                            userRef.child("dieta").setValue(resultText).addOnSuccessListener(aVoid -> {
+                                Log.d("Firebase", "Plano de dieta salvo com sucesso!");
+                            }).addOnFailureListener(e -> {
+                                Log.e("Firebase", "Erro ao salvar o plano de dieta", e);
+                            });
+                        }
+                    }
                 }
                 @Override
                 public void onFailure(Throwable t) {
