@@ -9,7 +9,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -31,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textBemVindo"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="36dp"
                 android:hint="Nome"
                 android:textColorHint="@color/hint_selector"
                 app:hintTextColor="@color/edit_text_color_focus"
@@ -126,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/layoutAltura"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="50dp"
                 android:backgroundTint="@color/cor_selecionada"
                 android:text="Salvar"
                 android:textColor="@android:color/white"

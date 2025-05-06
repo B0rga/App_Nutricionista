@@ -8,4 +8,5 @@
     <color name="cor_TextMensagem" >#FFFFFF</color>
     <color name="nao_selecionado">#7A7A7A</color>
     <color name="splash_background_color">#121212</color>
+    <color name="bottom_nav_background">#1b1e23</color>
 </resources>

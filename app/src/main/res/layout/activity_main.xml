@@ -33,6 +33,7 @@
         android:layout_height="50dp"
         android:layout_below="@+id/head"
         android:layout_marginTop="0dp"
+        android:background="@color/bottom_nav_background"
         app:itemActiveIndicatorStyle="@null"
         app:itemIconTint="@color/top_nav_text_color"
         app:itemPaddingBottom="20dp"

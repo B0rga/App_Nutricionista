@@ -14,7 +14,8 @@
         android:layout_height="603dp"
         android:layout_above="@+id/btnAddImagem"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="12dp">
+        android:layout_marginBottom="12dp"
+        android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/chat"
