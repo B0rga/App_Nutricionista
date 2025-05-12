@@ -84,35 +84,8 @@ public class chat extends Fragment {
         scroll = view.findViewById(R.id.scroll);
 
         btnGo.setEnabled(false);
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if (user != null) {
-            uid = user.getUid();
-            userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
-
-            userRef.get().addOnCompleteListener(task -> {
-                if (task.isSuccessful() && task.getResult().exists()) {
-                    String nome = task.getResult().child("nome").getValue(String.class);
-                    String peso = task.getResult().child("peso").getValue(String.class);
-                    String altura = task.getResult().child("altura").getValue(String.class);
-
-                    StringBuilder dadosUsuario = new StringBuilder();
-                    if (nome != null) dadosUsuario.append("O nome do paciente é ").append(nome).append(". ");
-                    if (peso != null) dadosUsuario.append("Seu peso é ").append(peso).append(" kg. ");
-                    if (altura != null) dadosUsuario.append("Sua altura é ").append(altura).append(" cm. ");
-
-                    if (dadosUsuario.length() > 0) {
-                        instrucao = dadosUsuario + instrucao;
-                    } else {
-                        instrucao = "Comece perguntando o nome, peso e altura do paciente. " + instrucao;
-                    }
-                } else {
-                    instrucao = "Comece perguntando o nome, peso e altura do paciente. " + instrucao;
-                }
-
-                btnGo.setEnabled(true);
-            });
-        }
+        CarregarDadosFirebase();
 
         // Inicializando variável de histórico
         history = new ArrayList<>();
@@ -193,6 +166,41 @@ public class chat extends Fragment {
         btnGallery.setOnClickListener(v -> galleryContract.launch("image/*"));
 
         return view;
+    }
+
+    public void AtualizarDados() {
+        CarregarDadosFirebase();
+    }
+
+    private void CarregarDadosFirebase() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            String uid = user.getUid();
+            DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("Users").child(uid);
+
+            userRef.get().addOnCompleteListener(task -> {
+                if (task.isSuccessful() && task.getResult().exists()) {
+                    String nome = task.getResult().child("nome").getValue(String.class);
+                    String peso = task.getResult().child("peso").getValue(String.class);
+                    String altura = task.getResult().child("altura").getValue(String.class);
+
+                    StringBuilder dadosUsuario = new StringBuilder();
+                    if (nome != null) dadosUsuario.append("O nome do paciente é ").append(nome).append(". ");
+                    if (peso != null) dadosUsuario.append("Seu peso é ").append(peso).append(" kg. ");
+                    if (altura != null) dadosUsuario.append("Sua altura é ").append(altura).append(" cm. ");
+
+                    if (dadosUsuario.length() > 0) {
+                        instrucao = dadosUsuario + instrucao;
+                    } else {
+                        instrucao = "Comece perguntando o nome, peso e altura do paciente. " + instrucao;
+                    }
+                } else {
+                    instrucao = "Comece perguntando o nome, peso e altura do paciente. " + instrucao;
+                }
+
+                btnGo.setEnabled(true);
+            });
+        }
     }
 
     // Method que cria uma Uri para a imagem e a armazena dentro do diretório interno do app
