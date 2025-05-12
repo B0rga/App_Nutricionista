@@ -92,7 +92,7 @@ public class perfil extends Fragment {
                     String altura = snapshot.child("altura").getValue(String.class);
 
                     String primeiroNome = nome != null ? nome.split(" ")[0] : "";
-                    textBemVindo.setText("Bem vindo, " + primeiroNome +"!");
+                    textBemVindo.setText("Bem vindo(a), " + primeiroNome +"!");
 
                     editNome.setText(nome != null ? nome : "");
                     editEmail.setText(email != null ? email : "");

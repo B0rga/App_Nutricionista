@@ -32,7 +32,7 @@
                 android:text="Inice a conversa para receber seu atendimento nutricional personalizado\n\nEnvie fotos do pratos de comida para saber os nutrientes e calorias envolvidas\n\nClique no ícone de som abaixo da mensagem para o texto ser falado"
                 android:textAlignment="viewStart"
                 android:textColor="#7A7A7A"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 tools:ignore="RtlCompat" />
         </LinearLayout>
     </ScrollView>
