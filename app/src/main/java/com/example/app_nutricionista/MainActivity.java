@@ -47,22 +47,14 @@ public class MainActivity extends AppCompatActivity {
         binding.topNavigationView.setOnItemSelectedListener(item -> {
             Fragment selectedFragment = fragments.get(item.getItemId());
 
-            if (selectedFragment != null) {
-                if (selectedFragment != activeFragment) {
-                    getSupportFragmentManager().beginTransaction()
-                            .hide(activeFragment)
-                            .show(selectedFragment)
-                            .commit();
-                    activeFragment = selectedFragment;
-                } else if (item.getItemId() == R.id.chatId) {
-                    // Força atualização mesmo que o usuário já esteja no fragmento
-                    chat chatFragment = (chat) fragments.get(R.id.chatId);
-                    chatFragment.AtualizarDados();
-                }
-                return true;
+            if (selectedFragment != null && selectedFragment != activeFragment) {
+                fragmentManager.beginTransaction()
+                        .hide(activeFragment)
+                        .show(selectedFragment)
+                        .commit();
+                activeFragment = selectedFragment;
             }
-            return false;
+            return true;
         });
-
     }
 }

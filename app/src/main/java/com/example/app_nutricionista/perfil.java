@@ -6,6 +6,8 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -56,6 +58,8 @@ public class perfil extends Fragment {
             Toast.makeText(getContext(), "Usuário não autenticado", Toast.LENGTH_SHORT).show();
         }
 
+        FormatarDataNascimento();
+
         btnSair.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,6 +82,38 @@ public class perfil extends Fragment {
         });
 
         return view;
+    }
+
+    private void FormatarDataNascimento(){
+        editNascimento.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int start, int before, int after) {
+                String currentText = charSequence.toString();
+
+                // Remove todas as barras antes de formatar
+                String cleanText = currentText.replaceAll("[^0-9]", "");
+
+                // Adiciona barras conforme necessário
+                if (cleanText.length() >= 2) {
+                    cleanText = cleanText.substring(0, 2) + "/" + cleanText.substring(2);
+                }
+                if (cleanText.length() >= 5) {
+                    cleanText = cleanText.substring(0, 5) + "/" + cleanText.substring(5);
+                }
+
+                // Atualiza o texto
+                if (!currentText.equals(cleanText)) {
+                    editNascimento.setText(cleanText);
+                    editNascimento.setSelection(cleanText.length());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {}
+        });
     }
 
     private void CarregarDadosDoUsuario() {

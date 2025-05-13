@@ -80,7 +80,8 @@
                     android:id="@+id/editNascimento"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:inputType="none"
+                    android:maxLength="10"
                     android:theme="@style/ThemeOverlay.AppTheme.TextInputEditText.Outlined"/>
             </com.google.android.material.textfield.TextInputLayout>
 

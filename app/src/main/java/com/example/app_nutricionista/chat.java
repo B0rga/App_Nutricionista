@@ -168,10 +168,6 @@ public class chat extends Fragment {
         return view;
     }
 
-    public void AtualizarDados() {
-        CarregarDadosFirebase();
-    }
-
     private void CarregarDadosFirebase() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
