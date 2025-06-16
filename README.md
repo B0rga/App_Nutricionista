@@ -19,6 +19,7 @@ Aplicativo Android desenvolvido para auxiliar no acompanhamento nutricional pers
 
 ![image](https://github.com/user-attachments/assets/fac26d21-a261-4cf7-abd8-a7e47fe52568)
 ![image](https://github.com/user-attachments/assets/6e462239-e7b7-4c75-90d4-053b2d23ef0b)
+![image](https://github.com/user-attachments/assets/689cc078-652b-4222-98c0-af59d118c439)
 ![image](https://github.com/user-attachments/assets/9b0697a5-f584-42bb-b1c9-46a0cb01499b)
 ![image](https://github.com/user-attachments/assets/31b9e17f-4ee5-4ee9-b0da-226533407f5d)
 ![image](https://github.com/user-attachments/assets/8bfae77e-3571-4bb9-ab5f-08860f830fbc)
