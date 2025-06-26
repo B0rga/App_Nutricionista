@@ -4,7 +4,7 @@ Aplicativo Android desenvolvido para auxiliar no acompanhamento nutricional pers
 
 ## 📱 Funcionalidades
 
-- Envio de mensagens para comunicação com o nutricionista.
+- Envio de mensagens para comunicação com IA nutricionista.
 - Upload de fotos das refeições para análise nutricional.
 - Interface intuitiva com navegação facilitada.
 - Integração com serviços de reconhecimento de imagem para identificação de alimentos.
