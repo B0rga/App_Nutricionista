@@ -1,6 +1,6 @@
 # NutriSense
 
-Aplicativo Android desenvolvido para auxiliar no acompanhamento nutricional personalizado. Permite que usuários enviem mensagens e imagens de suas refeições para obter análises nutricionais detalhadas.
+Aplicativo Android desenvolvido para auxiliar no acompanhamento nutricional personalizado. Permite que usuários enviem mensagens e imagens de suas refeições para obter análises nutricionais de uma IA especializada.
 
 ## 📱 Funcionalidades
 
